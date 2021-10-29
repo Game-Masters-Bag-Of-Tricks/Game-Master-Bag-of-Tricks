@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="style.css">
+<script src="single_npc_gen.js"></script>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>NPC generator</title>
+</head>
+<body>
+<a href="main.html">
+    <img id="logo" alt="gmbot text" src="images/banners.png">
+</a>
+<form class="mapContent" action="single_npc_gen.html" method="get">
+    <label for="align">alignment</label>
+    <select id="align" name="align">
+        <option value="neutral">Neutral</option>
+        <option value="chaotic">Chaotic</option>
+        <option value="lawful">Lawful</option>
+    </select>
+
+    <label for="race">race</label>
+    <select id="race" name="race">
+        <option value="orc">orc</option>
+        <option value="elf">elf</option>
+        <option value="human">human</option>
+    </select>
+
+    <label for="gender">gender</label>
+    <select id="gender" name="gender">
+        <option value="m">M</option>
+        <option value="f">F</option>
+    </select>
+
+    <label for="class">class</label>
+    <select id="class" name="class">
+        <option value="wizard">Wizard</option>
+        <option value="fighter">Fighter</option>
+        <option value="rogue">Rogue</option>
+    </select>
+
+    <label for="level">Level</label>
+    <select id="level" name="level">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
+
+    <label for="threat">Threat</label>
+    <select id="threat" name="threat">
+        <option value="neutral">Neutral</option>
+        <option value="chaotic">Chaotic</option>
+        <option value="lawful">Lawful</option>
+    </select>
+
+    <input type="submit">
+</form>
+<div id="content">
+</div>
