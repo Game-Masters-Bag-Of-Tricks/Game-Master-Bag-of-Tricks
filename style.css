@@ -90,6 +90,18 @@ body{
     font-size: 45px;
 }
 
+#game{
+    border: 3px solid #73AD21;
+}
+
+
+/* Style for map pop up boxes */
+.mapContent{
+    text-align: center;
+
+    margin: auto;
+}
+
 /* Style The Dropdown Button (start) */
 .dropbtn {
 
