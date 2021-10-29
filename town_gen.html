@@ -2,6 +2,9 @@
 <html lang="en">
 <link rel="stylesheet" href="style.css">
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;900&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <title>Town generator</title>
 </head>
@@ -20,5 +23,49 @@
     </div>
 </div>
 
+<p id="menu_d_gen">Town Generator</p>
+
+<div class="container">
+    <div>
+        <p class="drop_label">Size</p>
+        <div class="select">
+            <select>
+                <option selected disabled hidden> Select a Size </option>
+                <option value="small">Small</option>
+                <option value="Medium">Medium</option>
+                <option value="Large">Large</option>
+            </select>
+        </div>
+    </div>
+
+
+    <div>
+        <p class="drop_label">Complexity</p>
+        <div class="select">
+
+            <select>
+                <option selected disabled hidden> Select a Complexity </option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+        </div>
+    </div>
+    <div>
+        <p class="drop_label">Threats</p>
+        <div class="select">
+
+            <select>
+                <option selected disabled hidden> Select a Threat </option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+    </div>
+</div>
+    <input id="generate" type="submit" value="Generate">
+
+
+</div>
 </body>
 </html>
