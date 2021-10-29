@@ -13,49 +13,64 @@
 <a href="main.html">
     <img id="logo" alt="gmbot text" src="images/banners.png">
 </a>
+
+<div class="dropdown">
+    <button class="dropbtn">Menu</button>
+    <div class="dropdown-content">
+        <a href="npc_gen.html">NPC Generator</a>
+        <a href="dung_gen.html">Dungeon Generator</a>
+        <a href="town_gen.html">Town Generator</a>
+    </div>
+</div>
+<!-- Modified drop down options to work with script and look cleaner - Anthony -->
 <form class="mapContent" action="single_npc_gen.html" method="get">
-    <label for="align">alignment</label>
-    <select id="align" name="align">
-        <option value="neutral">Neutral</option>
-        <option value="chaotic">Chaotic</option>
-        <option value="lawful">Lawful</option>
+    <label for="alignments">Alignment</label>
+    <select id="alignments" name="align">
+        <option value = "Random">Random</option>
     </select>
 
-    <label for="race">race</label>
-    <select id="race" name="race">
-        <option value="orc">orc</option>
-        <option value="elf">elf</option>
-        <option value="human">human</option>
+    <label for="races">Race</label>
+    <select id="races" name="race">
+        <option value = "Random">Random</option>
     </select>
 
-    <label for="gender">gender</label>
+    <label for="gender">Gender</label>
     <select id="gender" name="gender">
-        <option value="m">M</option>
-        <option value="f">F</option>
+        <option value = "Random">R</option>
+        <option value="Male">M</option>
+        <option value="Female">F</option>
     </select>
 
-    <label for="class">class</label>
-    <select id="class" name="class">
-        <option value="wizard">Wizard</option>
-        <option value="fighter">Fighter</option>
-        <option value="rogue">Rogue</option>
+    <label for="classes">Class</label>
+    <select id="classes" name="class">
+        <option value = "Random">Random</option>
     </select>
 
     <label for="level">Level</label>
     <select id="level" name="level">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
+        <option value = "Random">R</option>
+        <script>
+            //Generated list 1-20 without just repeating <option> over and over - Anthony
+            for(let i = 1; i <= 20; i++) {
+                let select = document.getElementById("level");
+                let opt = document.createElement("option");
+                opt.text = i;
+                opt.value = i;
+                select.appendChild(opt)
+            }
+        </script>
     </select>
 
     <label for="threat">Threat</label>
     <select id="threat" name="threat">
-        <option value="neutral">Neutral</option>
-        <option value="chaotic">Chaotic</option>
-        <option value="lawful">Lawful</option>
+        <option value = "Random">R</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
     </select>
 
-    <input type="submit">
+    <!-- Currently this button is just used to prove the drop downs are being read proper - Anthony -->
+    <button type="button" class="gen" onclick="generateNPC()">Generate</button>
 </form>
 <div id="content">
+    <p id = "output" align="center"></p>
 </div>
