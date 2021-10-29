@@ -23,7 +23,7 @@
     </div>
 </div>
 <!-- Modified drop down options to work with script and look cleaner - Anthony -->
-<form class="mapContent" action="single_npc_gen.html" method="get">
+<form id = "filters" class="mapContent" action="single_npc_gen.html" method="POST">
     <label for="alignments">Alignment</label>
     <select id="alignments" name="align">
         <option value = "Random">Random</option>
@@ -69,7 +69,7 @@
     </select>
 
     <!-- Currently this button is just used to prove the drop downs are being read proper - Anthony -->
-    <button type="button" class="gen" onclick="generateNPC()">Generate</button>
+    <button id = "gen" type="button" class="gen" onclick="generateNPC()">Generate</button>
 </form>
 <div id="content">
     <p id = "output" align="center"></p>
