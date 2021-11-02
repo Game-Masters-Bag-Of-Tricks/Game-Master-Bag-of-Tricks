@@ -1,25 +1,17 @@
-var canvas = document.getElementById('game');//create canvas var
-var canvasContext = canvas.getContext('2d'); //make it 2d	
+var canvas = document.getElementById('game');//create canvas
+var canvasContext = canvas.getContext('2d'); //make it 2d
 var w = 20; //width of tiles
-
-var rows = 50; //how many rows of tiles
-var cols= 50; //how many cols of tiles
-
-var grid = []; //where we store the map
-
-var rooms = []; //where we store the rooms
+var rows = 50; //how many rows o
+var cols= 50; //how many cols
+var grid = []; //map
+var rooms = []; //rooms
 var collide = false; //whether or not the rooms are colliding
-
 var amount = 6; //10amount of rooms
 var size = 5;	//the actuall size will be a number bettween 5 and 10 | e.g: size+sizeMin
 var sizeMin = 5;
-
 var disX; //distance x between rooms
 var disY; //distance y between rooms
 var corridorW = 1; //corridor width
-
-
-////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
 
 function Cell(c, r, x, y)//cell object
@@ -84,74 +76,7 @@ function makeGrid()//create the array of tiles
     			}
   		}
  	}
- 	
-////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////
-    
-function Room(x, y, width, height, i)//room object
-	{
-		this.x = (x-1)*w; //column
-		this.y = (y-1)*w; //row
-		this.w = width*w; //width
-		this.h = height*w; //height
-		
-		this.center = [Math.floor(this.x/w+width/2), Math.floor(this.y/w+height/2)]//center
-		
-		this.draw = function()//draw the number of the room
-			{
-				canvasContext.fillStyle = "white"
-				canvasContext.fillText(i, this.x+this.w/2, this.y+this.h/2-20)
-			}
-	}
 
-function createRooms()//create the rooms
-	{
-		for (var i = 0; i < amount; i++) //for the amount of rooms you want
-			{
-				var room = new Room(Math.floor(Math.random()*rows)+1, Math.floor(Math.random()*cols)+1, Math.floor(Math.random()*size)+sizeMin, Math.floor(Math.random()*size)+sizeMin, i)
-				//create a room object ^
-					
-				if(i > 0)//if not the first room
-					{
-						if(rooms[0].x+rooms[0].w >= canvas.width || rooms[0].x <= 0 || rooms[0].y+rooms[0].h >= canvas.height || rooms[0].y <= 0)//if first room is outside the canvas
-							{
-								rooms = [] //restart
-								createRooms();
-								break;
-							}
-							
-						for (var e = 0; e < rooms.length; e++) //for all the previous rooms
-							{
-								collide = false//they are not colliding
-
-								if(room.x <= rooms[e].x+rooms[e].w && room.x+room.w >= rooms[e].x && room.y <= rooms[e].y+rooms[e].h && room.y+room.h >= rooms[e].y)//if colliding with previous room
-									{
-										collide = true;//kill room
-										i--
-										break;
-									}
-								else if (room.x+room.w >= canvas.width || room.x <= 0 || room.y+room.h >= canvas.height || room.y <= 0) //if outside of canvas
-									{
-										collide = true;//kill room
-										i--;
-										break;
-									}
-							}
-					}
-				
-				if(collide == false)//if they have not collided
-					{
-						rooms.push(room) //add room to the array
-						if(i>0)//make corridors
-							{
-								hCorridor(rooms[i-1].center[0], room.center[0], rooms[i-1].center[1], room.center[1])
-								vCorridor(rooms[i-1].center[0], room.center[0], rooms[i-1].center[1], room.center[1])
-							}
-					}
-			}
-	}
-
-////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
 
 function hCorridor(x1,x2,y1,y2)//horizontal corridor creator
@@ -223,8 +148,70 @@ function vCorridor(x1,x2,y1,y2)//vertical corridor creator
 			}
 			
 	}
-		
- ////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////
+
+function createRooms()//create the rooms
+{
+	for (var i = 0; i < amount; i++) //for the amount of rooms you want
+	{
+		var room = new Room(Math.floor(Math.random()*rows)+1, Math.floor(Math.random()*cols)+1, Math.floor(Math.random()*size)+sizeMin, Math.floor(Math.random()*size)+sizeMin, i)
+		//create a room object ^
+
+		if(i > 0)//if not the first room
+		{
+			if(rooms[0].x+rooms[0].w >= canvas.width || rooms[0].x <= 0 || rooms[0].y+rooms[0].h >= canvas.height || rooms[0].y <= 0)//if first room is outside the canvas
+			{
+				rooms = [] //restart
+				createRooms();
+				break;
+			}
+
+			for (var e = 0; e < rooms.length; e++) //for all the previous rooms
+			{
+				collide = false//they are not colliding
+
+				if(room.x <= rooms[e].x+rooms[e].w && room.x+room.w >= rooms[e].x && room.y <= rooms[e].y+rooms[e].h && room.y+room.h >= rooms[e].y)//if colliding with previous room
+				{
+					collide = true;//kill room
+					i--
+					break;
+				}
+				else if (room.x+room.w >= canvas.width || room.x <= 0 || room.y+room.h >= canvas.height || room.y <= 0) //if outside of canvas
+				{
+					collide = true;//kill room
+					i--;
+					break;
+				}
+			}
+		}
+
+		if(collide == false)//if they have not collided
+		{
+			rooms.push(room) //add room to the array
+			if(i>0)//make corridors
+			{
+				hCorridor(rooms[i-1].center[0], room.center[0], rooms[i-1].center[1], room.center[1])
+				vCorridor(rooms[i-1].center[0], room.center[0], rooms[i-1].center[1], room.center[1])
+			}
+		}
+	}
+}
+function Room(x, y, width, height, i)//room object
+{
+	this.x = (x-1)*w; //column
+	this.y = (y-1)*w; //row
+	this.w = width*w; //width
+	this.h = height*w; //height
+
+	this.center = [Math.floor(this.x/w+width/2), Math.floor(this.y/w+height/2)]//center
+
+	this.draw = function()//draw the number of the room
+	{
+		canvasContext.fillStyle = "white"
+		canvasContext.fillText(i, this.x+this.w/2, this.y+this.h/2-20)
+	}
+}
 ////////////////////////////////////////////////////////////////
 
  
@@ -246,10 +233,13 @@ makeGrid()//make map
 createRooms()//make rooms
 draw()//update
   
-function gen()
+function gen(sizes)
 	{
 		grid = []
 		rooms = []
+
+		amount = sizes;
+
 		
 		makeGrid()//make map
 		createRooms()//make rooms
