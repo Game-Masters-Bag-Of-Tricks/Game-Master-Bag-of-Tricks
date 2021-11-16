@@ -1,0 +1,736 @@
+[
+  {
+    "super" : "academic",
+    "super_value" : 1,
+    "sub": [
+      {
+        "name" : "advocate",
+        "value" : 1
+      },
+      {
+        "name" : "astrologer",
+        "value" : 1
+      },
+      {
+        "name" : "cartographer",
+        "value" : 1
+      },
+      {
+        "name" : "judge",
+        "value" : 1
+      },
+      {
+        "name" : "scholar",
+        "value" : 1
+      },
+      {
+        "name" : "scribe",
+        "value" : 1
+      },
+      {
+        "name" : "student",
+        "value" : 1
+      },
+      {
+        "name" : "writer",
+        "value" : 1
+      }
+    ]
+  },
+  {
+    "super" : "aristocrat",
+    "super_value" : 1,
+    "sub" : [
+      {
+        "name" : "duke",
+        "value" : 1
+      },
+      {
+        "name" : "marquess",
+        "value" : 1
+      },
+      {
+        "name" : "count",
+        "value" : 1
+      },
+      {
+        "name" : "viscount",
+        "value" : 1
+      },
+      {
+        "name" : "baron",
+        "value" : 1
+      },
+      {
+        "name" : "greatchief",
+        "value" : 1
+      },
+      {
+        "name" : "warchief",
+        "value" : 1
+      },
+      {
+        "name" : "chief",
+        "value" : 1
+      },
+      {
+        "name" : "elder",
+        "value" : 1
+      }
+    ]
+  },
+  {
+    "super" : "builder",
+    "super_value" : 1,
+    "sub" : [
+      {
+        "name" : "architect",
+        "value" : 1
+      },
+      {
+        "name" : "bricklayer",
+        "value" : 1
+      },
+      {
+        "name" : "carpenter",
+        "value" : 1
+      },
+      {
+        "name" : "mason",
+        "value" : 1
+      },
+      {
+        "name" : "plasterer",
+        "value" : 1
+      },
+      {
+        "name" : "roofer",
+        "value" : 1
+      }
+    ]
+  },
+  {
+    "super" : "clergy",
+    "super_value" : 1,
+    "sub" : [
+      {
+        "name" : "acolyte",
+        "value" : 1
+      },
+      {
+        "name" : "priest",
+        "value" : 1
+      },
+      {
+        "name" : "shaman",
+        "value" : 1
+      }
+    ]
+  },
+  {
+    "super" : "craftsperson",
+    "super_value" : 1,
+    "sub" : [
+      {
+        "name" : "alchemist",
+        "value" : 1
+      },
+      {
+        "name" : "armor",
+        "value" : 1
+      },
+      {
+        "name" : "baker",
+        "value" : 1
+      },
+      {
+        "name" : "basket weaver",
+        "value" : 1
+      },
+      {
+        "name" : "blacksmith",
+        "value" : 1
+      },
+      {
+        "name" : "bookbinder",
+        "value" : 1
+      },
+      {
+        "name" : "bowyer",
+        "value" : 1
+      },
+      {
+        "name" : "brewer",
+        "value" : 1
+      },
+      {
+        "name" : "butcher",
+        "value" : 1
+      },
+      {
+        "name" : "chandler",
+        "value" : 1
+      },
+      {
+        "name" : "cobbler",
+        "value" : 1
+      },
+      {
+        "name" : "cook",
+        "value" : 1
+      },
+      {
+        "name" : "cooper",
+        "value" : 1
+      },
+      {
+        "name" : "dyer",
+        "value" : 1
+      },
+      {
+        "name" : "engraver",
+        "value" : 1
+      },
+      {
+        "name" : "fuller",
+        "value" : 1
+      },
+      {
+        "name" : "furniture maker",
+        "value" : 1
+      },
+      {
+        "name" : "furrier",
+        "value" : 1
+      },
+      {
+        "name" : "glass blower",
+        "value" : 1
+      },
+      {
+        "name" : "gold smith",
+        "value" : 1
+      },
+      {
+        "name" : "instrument maker",
+        "value" : 1
+      },
+      {
+        "name" : "inventor",
+        "value" : 1
+      },
+      {
+        "name" : "jeweler",
+        "value" : 1
+      },
+      {
+        "name" : "leatherworker",
+        "value" : 1
+      },
+      {
+        "name" : "locksmith",
+        "value" : 1
+      },
+      {
+        "name" : "painter",
+        "value" : 1
+      },
+      {
+        "name" : "paper maker",
+        "value" : 1
+      },
+      {
+        "name" : "potion brewer",
+        "value" : 1
+      },
+      {
+        "name" : "potter",
+        "value" : 1
+      },
+      {
+        "name" : "rope maker",
+        "value" : 1
+      },
+      {
+        "name" : "rug maker",
+        "value" : 1
+      },
+      {
+        "name" : "sculptor",
+        "value" : 1
+      },
+      {
+        "name" : "ship builder",
+        "value" : 1
+      },
+      {
+        "name" : "silversmith",
+        "value" : 1
+      },
+      {
+        "name" : "skinner",
+        "value" : 1
+      },
+      {
+        "name" : "soap maker",
+        "value" : 1
+      },
+      {
+        "name" : "tailor",
+        "value" : 1
+      },
+      {
+        "name" : "tanner",
+        "value" : 1
+      },
+      {
+        "name" : "tinker",
+        "value" : 1
+      },
+      {
+        "name" : "toymaker",
+        "value" : 1
+      },
+      {
+        "name" : "weaponsmith",
+        "value" : 1
+      },
+      {
+        "name" : "weaver",
+        "value" : 1
+      },
+      {
+        "name" : "wheelwright",
+        "value" : 1
+      },
+      {
+        "name" : "woodcarver",
+        "value" : 1
+      }
+    ]
+  },
+  {
+    "super" : "criminal",
+    "super_value" : 1,
+    "sub" : [
+      {
+        "name" : "bandit",
+        "value" : 1
+      },
+      {
+        "name" : "burglar",
+        "value" : 1
+      },
+      {
+        "name" : "pickpocket",
+        "value" : 1
+      },
+      {
+        "name" : "pirate",
+        "value" : 1
+      },
+      {
+        "name" : "raider",
+        "value" : 1
+      }
+    ]
+  },
+  {
+    "super" : "entertainer",
+    "super_value" : 1,
+    "sub" : [
+      {
+        "name" : "acrobat",
+        "value" : 1
+      },
+      {
+        "name" : "bather",
+        "value" : 1
+      },
+      {
+        "name" : "jester",
+        "value" : 1
+      },
+      {
+        "name" : "minstrel",
+        "value" : 1
+      },
+      {
+        "name" : "prostitute",
+        "value" : 1
+      },
+      {
+        "name" : "storyteller",
+        "value" : 1
+      }
+    ]
+  },
+  {
+    "super": "farmer",
+    "super_value": 1,
+    "sub": [
+      {
+        "name": "crop farmer",
+        "value": 1
+      },
+      {
+        "name": "gatherer",
+        "value": 1
+      },
+      {
+        "name": "herder",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "super" : "financier",
+    "super_value" : 1,
+    "sub" : [
+      {
+        "name" : "banker",
+        "value" : 1
+      },
+      {
+        "name" : "moneychanger",
+        "value" : 1
+      },
+      {
+        "name" : "pawnbroker",
+        "value" : 1
+      },
+      {
+        "name" : "tax collector",
+        "value" : 1
+      }
+    ]
+  },
+  {
+    "super" : "healer",
+    "super_value" : 1,
+    "sub" : [
+      {
+        "name" : "healer",
+        "value" : 1
+      },
+      {
+        "name" : "herbalist",
+        "value" : 1
+      },
+      {
+        "name" : "midwife",
+        "value" : 1
+      }
+    ]
+  },
+  {
+    "super" : "hosteler",
+    "super_value" : 1,
+    "sub" : [
+      {
+        "name" : "brothel keeper",
+        "value" : 1
+      },
+      {
+        "name" : "innkeeper",
+        "value" : 1
+      },
+      {
+        "name" : "restaurantier",
+        "value" : 1
+      },
+      {
+        "name" : "tavern keeper",
+        "value" : 1
+      }
+    ]
+  },
+  {
+    "super" : "laborer",
+    "super_value" : 1,
+    "sub" : [
+      {
+        "name" : "day laborer",
+        "value" : 1
+      },
+      {
+        "name" : "miner",
+        "value" : 1
+      },
+      {
+        "name" : "porter",
+        "value" : 1
+      }
+    ]
+  },
+  {
+    "super" : "merchant",
+    "super_value" : 1,
+    "sub" : [
+      {
+        "name" : "beer merchant",
+        "value" : 1
+      },
+      {
+        "name" : "bookseller",
+        "value" : 1
+      },
+      {
+        "name" : "caravanner",
+        "value" : 1
+      },
+      {
+        "name" : "dairy seller",
+        "value" : 1
+      },
+      {
+        "name" : "fishmonger",
+        "value" : 1
+      },
+      {
+        "name" : "florist",
+        "value" : 1
+      },
+      {
+        "name" : "grain merchant",
+        "value" : 1
+      },
+      {
+        "name" : "grocer",
+        "value" : 1
+      },
+      {
+        "name" : "haberdasher",
+        "value" : 1
+      },
+      {
+        "name" : "hay merchant",
+        "value" : 1
+      },
+      {
+        "name" : "livestock merchant",
+        "value" : 1
+      },
+      {
+        "name" : "mercer",
+        "value" : 1
+      },
+      {
+        "name" : "military outfitter",
+        "value" : 1
+      },
+      {
+        "name" : "miller",
+        "value" : 1
+      },
+      {
+        "name" : "peddler",
+        "value" : 1
+      },
+      {
+        "name" : "slaver",
+        "value" : 1
+      },
+      {
+        "name" : "spice merchant",
+        "value" : 1
+      },
+      {
+        "name": "tobacco merchant",
+        "value": 1
+      },
+      {
+        "name" : "used clothier",
+        "value" : 1
+      },
+      {
+        "name" : "warehouser",
+        "value" : 1
+      },
+      {
+        "name" : "wine merchant",
+        "value" : 1
+      },
+      {
+        "name" : "woodseller",
+        "value" : 1
+      },
+      {
+        "name" : "wood merchant",
+        "value" : 1
+      }
+    ]
+  },
+  {
+    "super" : "military",
+    "super_value" : 1,
+    "sub" : [
+      {
+        "name" : "bounty hunter",
+        "value" : 1
+      },
+      {
+        "name" : "city guard",
+        "value" : 1
+      },
+      {
+        "name" : "private guard",
+        "value" : 1
+      },
+      {
+        "name" : "mercenary",
+        "value" : 1
+      },
+      {
+        "name" : "soldier",
+        "value" : 1
+      },
+      {
+        "name" : "village guard",
+        "value" : 1
+      }
+    ]
+  },
+  {
+    "super" : "outdoor",
+    "super_value" : 1,
+    "sub" : [
+      {
+        "name" : "explorer",
+        "value" : 1
+      },
+      {
+        "name" : "fisher",
+        "value" : 1
+      },
+      {
+        "name" : "hunter",
+        "value" : 1
+      },
+      {
+        "name" : "sailor",
+        "value" : 1
+      },
+      {
+        "name" : "trapper",
+        "value" : 1
+      },
+      {
+        "name" : "traveler",
+        "value" : 1
+      }
+    ]
+  },
+  {
+    "super" : "public servant",
+    "super_value" : 1,
+    "sub" : [
+      {
+        "name" : "diplomat",
+        "value" : 1
+      },
+      {
+        "name" : "official",
+        "value" : 1
+      },
+      {
+        "name" : "politician",
+        "value" : 1
+      },
+      {
+        "name" : "town crier",
+        "value" : 1
+      }
+    ]
+  },
+  {
+    "super" : "servant",
+    "super_value" : 1,
+    "sub" : [
+      {
+        "name" : "barber",
+        "value" : 1
+      },
+      {
+        "name" : "carriage driver",
+        "value" : 1
+      },
+      {
+        "name" : "domestic servant",
+        "value" : 1
+      },
+      {
+        "name" : "gardener",
+        "value" : 1
+      },
+      {
+        "name" : "groom",
+        "value" : 1
+      },
+      {
+        "name" : "guide",
+        "value" : 1
+      },
+      {
+        "name" : "inn server",
+        "value" : 1
+      },
+      {
+        "name" : "launderer",
+        "value" : 1
+      },
+      {
+        "name" : "page",
+        "value" : 1
+      },
+      {
+        "name" : "rat catcher",
+        "value" : 1
+      },
+      {
+        "name" : "restaurant server",
+        "value" : 1
+      },
+      {
+        "name" : "slave",
+        "value" : 1
+      },
+      {
+        "name" : "tavern server",
+        "value" : 1
+      },
+      {
+        "name" : "tout",
+        "value" : 1
+      }
+    ]
+  },
+  {
+    "super" : "unemployed",
+    "super_value" : 1,
+    "sub" : [
+      {
+        "name" : "beggar",
+        "value" : 1
+      },
+      {
+        "name" : "child",
+        "value" : 1
+      },
+      {
+        "name" : "housespouse",
+        "value" : 1
+      }
+    ]
+  }
+]
+
+
+
+
+
+
+
+
+
+
