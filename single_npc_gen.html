@@ -41,36 +41,41 @@
         <option value="Female">F</option>
     </select>
 
-    <label for="classes">Class</label>
-    <select id="classes" name="class">
-        <option value = "Random">Random</option>
-    </select>
-
-    <label for="level">Level</label>
-    <select id="level" name="level">
-        <option value = "Random">R</option>
-        <script>
-            //Generated list 1-20 without just repeating <option> over and over - Anthony
-            for(let i = 1; i <= 20; i++) {
-                let select = document.getElementById("level");
-                let opt = document.createElement("option");
-                opt.text = i;
-                opt.value = i;
-                select.appendChild(opt)
-            }
-        </script>
-    </select>
-
     <label for="threat">Threat</label>
-    <select id="threat" name="threat">
+    <select id="threat" onchange="showHidden(this)" name="threat">
         <option value = "Random">R</option>
         <option value="Yes">Yes</option>
         <option value="No">No</option>
     </select>
 
+    <label id = "isThreat" hidden = true>
+        <label for="classes">Class</label>
+        <select id="classes" name="class">
+            <option value = "Random">Random</option>
+        </select>
+
+        <label for="level">Level</label>
+        <select id="level" name="level">
+            <option value = "Random">R</option>
+            <script>
+                //Generated list 1-20 without just repeating <option> over and over - Anthony
+                for(let i = 1; i <= 20; i++) {
+                    let select = document.getElementById("level");
+                    let opt = document.createElement("option");
+                    opt.text = i;
+                    opt.value = i;
+                    select.appendChild(opt)
+                }
+            </script>
+        </select>
+    </label>
+
+    </br>
     <!-- Currently this button is just used to prove the drop downs are being read proper - Anthony -->
     <button id = "gen" type="button" class="gen" onclick="generateNPC()">Generate</button>
 </form>
-<div id="content">
-    <p id = "output" align="center"></p>
+<div id="npc_content" align="center" >
+    <p id = "output"></p>
+    </br>
+    <p id = "occupation"></p>
 </div>
