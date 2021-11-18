@@ -26,46 +26,31 @@
 <p id="menu_d_gen">Town Generator</p>
 
 <div class="container">
-    <div>
-        <p class="drop_label">Size</p>
-        <div class="select">
-            <select>
-                <option selected disabled hidden> Select a Size </option>
-                <option value="small">Small</option>
-                <option value="Medium">Medium</option>
-                <option value="Large">Large</option>
+    <div class="mapContent">
+        <form class="drop_label" action="dung_gen.html" method="post">
+
+            <label for="sizes">size</label>
+            <select id="sizes" name="sizes">
+                <option value = "0">Random</option>
+                <option value = "1">Small</option>
+                <option value = "2">Medium</option>
+                <option value = "3">Large</option>
+                <option value = "4">Extra Large</option>
             </select>
-        </div>
+
+        </form>
     </div>
-
-
-    <div>
-        <p class="drop_label">Complexity</p>
-        <div class="select">
-
-            <select>
-                <option selected disabled hidden> Select a Complexity </option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-            </select>
-        </div>
-    </div>
-    <div>
-        <p class="drop_label">Threats</p>
-        <div class="select">
-
-            <select>
-                <option selected disabled hidden> Select a Threat </option>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-            </select>
-        </div>
-    </div>
-</div>
-    <input id="generate" type="submit" value="Generate">
-
 
 </div>
+
+<div class="overlay-image">
+    <p class="mapContent">
+        <!--
+        <img class="top" src="./images/grid.png" alt="grid">
+        -->
+        <button class="drop_label" onclick="gen(sizes.value)">Generate</button><br><canvas id="game" width="1000" height="1000"></canvas><script src="map.js" ></script>
+    </p>
+</div>
+
 </body>
 </html>

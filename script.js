@@ -6,12 +6,13 @@ var cols= 50; //how many cols
 var grid = []; //map
 var rooms = []; //rooms
 var collide = false; //whether or not the rooms are colliding
-var amount = 6; //10amount of rooms
+var amount = 0; //10amount of rooms
 var size = 5;	//the actuall size will be a number bettween 5 and 10 | e.g: size+sizeMin
 var sizeMin = 5;
 var disX; //distance x between rooms
 var disY; //distance y between rooms
 var corridorW = 1; //corridor width
+var enemy = "n";
 ////////////////////////////////////////////////////////////////
 
 function Cell(c, r, x, y)//cell object
@@ -26,12 +27,12 @@ function Cell(c, r, x, y)//cell object
 			{
 		  	if(this.empty == false)
 		  		{
-		  			canvasContext.fillStyle = "#323232"
+		  			canvasContext.fillStyle = "#4b442e"
 		  			canvasContext.fillRect(this.x, this.y, w, w)
 		  		}
 		  	else 
 		  		{
-		  			canvasContext.fillStyle = "#696966"
+		  			canvasContext.fillStyle = "#BCAA74"
 		  			canvasContext.fillRect(this.x, this.y, w, w)
 		  		}
 			}
@@ -208,7 +209,13 @@ function Room(x, y, width, height, i)//room object
 
 	this.draw = function()//draw the number of the room
 	{
-		canvasContext.fillStyle = "white"
+		if (enemy == "y") {
+			if (tF())
+				canvasContext.fillStyle = "red"
+			else
+				canvasContext.fillStyle = "white"
+		} else
+			canvasContext.fillStyle = "white"
 		canvasContext.fillText(i, this.x+this.w/2, this.y+this.h/2-20)
 	}
 }
@@ -232,17 +239,62 @@ function draw()
 makeGrid()//make map
 createRooms()//make rooms
 draw()//update
-  
-function gen(sizes)
+
+function rand(num)
+	{
+		ret = 0;
+		switch(num) {
+			case 0:
+				ret = Math.floor(Math.random()*4+1)
+				ret = rand(ret)
+				break;
+			case 1:
+				ret = Math.floor((Math.random() * 3) + 3)
+				break;
+			case 2:
+				ret = Math.floor((Math.random() * 3) + 6)
+				break;
+			case 3:
+				ret = Math.floor((Math.random() * 3) + 11)
+				break;
+			case 4:
+				ret = Math.floor((Math.random() * 3) + 15)
+				break;
+			default:
+				ret = 1;
+				break;
+		}
+		return ret;
+	}
+
+function tF() {
+	flip = Math.floor((Math.random() * 2) + 1);
+	if (flip == 1)
+		return true;
+	else if (flip ==2)
+		return false;
+}
+
+function gen(sizes, threats)
 	{
 		grid = []
 		rooms = []
 
-		amount = sizes;
+		//receive post function variables
+		//size
+		amount = rand(parseInt(sizes));
+
+		//threats
+		if (threats == "r")
+			if (tF())
+				threats = "y"
+			else
+				threats = "n"
+		enemy = threats;
 
 		
 		makeGrid()//make map
 		createRooms()//make rooms
-		draw()//update
+		draw()//updates
 	}
 

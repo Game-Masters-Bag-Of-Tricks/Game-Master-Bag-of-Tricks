@@ -30,21 +30,16 @@
 
             <label for="sizes">size</label>
             <select id="sizes" name="sizes">
-                <option value = "4">Small</option>
-                <option value = "7">Medium</option>
-                <option value = "12">Large</option>
-                <option value = "17">Extra Large</option>
-            </select>
-
-            <label for="comp">complexity</label>
-            <select id="comp" name="comp">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
+                <option value = "0">Random</option>
+                <option value = "1">Small</option>
+                <option value = "2">Medium</option>
+                <option value = "3">Large</option>
+                <option value = "4">Extra Large</option>
             </select>
 
             <label for="threats">threats</label>
             <select id="threats" name="threats">
+                <option value="r">Random</option>
                 <option value="y">Y</option>
                 <option value="n">N</option>
             </select>
@@ -54,29 +49,12 @@
 
 </div>
 
+<div class="overlay-image">
+<p class="mapContent">
+    <img class="top" src="./images/grid.png" alt="grid">
+    <button class="drop_label" onclick="gen(sizes.value, threats.value)">Generate</button><br><canvas id="game" width="1000" height="1000"></canvas><script src="script.js" ></script>
+</p>
+</div>
 
-<p class="mapContent" ><button class="drop_label" onclick="gen(sizes.value)">Generate</button><br><canvas id="game" width="1000" height="1000"></canvas><script src="script.js" ></script></p>
-
-
-<!--    <div>-->
-<!--        <p class="drop_label">Complexity</p>-->
-<!--        <div class="select">-->
-
-<!--            <select>-->
-<!--                <option value="1">Pure CSS Select</option>-->
-<!--                <option value="2">No JS</option>-->
-<!--                <option value="3">Nice!</option>-->
-<!--            </select>-->
-<!--        </div>-->
-<!--        <p class="drop_label">Complexity</p>-->
-<!--        <div class="select">-->
-
-<!--            <select>-->
-<!--                <option value="1">Pure CSS Select</option>-->
-<!--                <option value="2">No JS</option>-->
-<!--                <option value="3">Nice!</option>-->
-<!--            </select>-->
-<!--        </div>-->
-<!--    </div>-->
 </body>
 </html>
