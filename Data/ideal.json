@@ -1,0 +1,73 @@
+[
+  {
+    "ideal": "good",
+    "ideal_value": 0,
+    "encompass_ideal": [
+      "Beauty",
+      "Charity",
+      "Greater Good",
+      "Life",
+      "Respect",
+      "Self sacrifice"
+    ]
+  },
+  {
+    "ideal": "lawful",
+    "ideal_value": 1,
+    "encompass_ideal": [
+      "Community",
+      "Fairness",
+      "Honor",
+      "Logic",
+      "Responsibility",
+      "Tradition"
+    ]
+  },
+  {
+    "ideal": "neutral",
+    "ideal_value": 2,
+    "encompass_ideal": [
+      "Community",
+      "Fairness",
+      "Honor",
+      "Logic",
+      "Responsibility",
+      "Tradition"
+    ]
+  },
+  {
+    "ideal": "evil",
+    "ideal_value": 3,
+    "encompass_ideal": [
+      "Domination",
+      "Greed",
+      "Might",
+      "Pain",
+      "Retribution",
+      "Slaughter"
+    ]
+  },
+  {
+    "ideal": "chaotic",
+    "ideal_value": 4,
+    "encompass_ideal": [
+      "creativity",
+      "Change",
+      "Freedom",
+      "Independence",
+      "Whimsy"
+    ]
+  },
+  {
+    "ideal": "other",
+    "ideal_value": 5,
+    "encompass_ideal": [
+      "Aspiration",
+      "Discovery",
+      "Glory",
+      "Nation",
+      "Redemption",
+      "Self knowledge"
+    ]
+  }
+]

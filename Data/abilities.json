@@ -1,0 +1,525 @@
+[
+  {
+    "given_trait": "Strength",
+    "trait_value": 0,
+    "power_lvl": [
+
+      {
+        "name": "level_num",
+        "value": 1
+      },
+      {
+        "name": "level_num",
+        "value": 2
+      },
+      {
+        "name": "level_num",
+        "value": 3
+      },
+      {
+        "name": "level_num",
+        "value": 4
+      },
+      {
+        "name": "level_num",
+        "value": 5
+      },
+      {
+        "name": "level_num",
+        "value": 6
+      },
+      {
+        "name": "level_num",
+        "value": 7
+      },
+      {
+        "name": "level_num",
+        "value": 8
+      },
+      {
+        "name": "level_num",
+        "value": 9
+      },
+      {
+        "name": "level_num",
+        "value": 10
+      },
+      {
+        "name": "level_num",
+        "value": 11
+      },
+      {
+        "name": "level_num",
+        "value": 12
+      },
+      {
+        "name": "level_num",
+        "value": 13
+      },
+      {
+        "name": "level_num",
+        "value": 14
+      },
+      {
+        "name": "level_num",
+        "value": 15
+      },
+      {
+        "name": "level_num",
+        "value": 16
+      },
+      {
+        "name": "level_num",
+        "value": 17
+      },
+      {
+        "name": "level_num",
+        "value": 18
+      },
+      {
+        "name": "level_num",
+        "value":19
+      },
+      {
+        "name": "level_num",
+        "value": 20
+      }
+
+
+
+    ]
+
+
+  },
+  {
+    "given_trait": "Dexterity",
+    "trait_value": 1,
+    "power_lvl": [
+      {
+        "name": "level_num",
+        "value": 1
+      },
+      {
+        "name": "level_num",
+        "value": 2
+      },
+      {
+        "name": "level_num",
+        "value": 3
+      },
+      {
+        "name": "level_num",
+        "value": 4
+      },
+      {
+        "name": "level_num",
+        "value": 5
+      },
+      {
+        "name": "level_num",
+        "value": 6
+      },
+      {
+        "name": "level_num",
+        "value": 7
+      },
+      {
+        "name": "level_num",
+        "value": 8
+      },
+      {
+        "name": "level_num",
+        "value": 9
+      },
+      {
+        "name": "level_num",
+        "value": 10
+      },
+      {
+        "name": "level_num",
+        "value": 11
+      },
+      {
+        "name": "level_num",
+        "value": 12
+      },
+      {
+        "name": "level_num",
+        "value": 13
+      },
+      {
+        "name": "level_num",
+        "value": 14
+      },
+      {
+        "name": "level_num",
+        "value": 15
+      },
+      {
+        "name": "level_num",
+        "value": 16
+      },
+      {
+        "name": "level_num",
+        "value": 17
+      },
+      {
+        "name": "level_num",
+        "value": 18
+      },
+      {
+        "name": "level_num",
+        "value": 19
+      },
+      {
+        "name": "level_num",
+        "value": 20
+      }
+    ]
+  },
+  {
+    "given_trait": "Constitution",
+    "trait_value": 2,
+    "power_lvl": [
+      {
+        "name": "level_num",
+        "value": 1
+      },
+      {
+        "name": "level_num",
+        "value": 2
+      },
+      {
+        "name": "level_num",
+        "value": 3
+      },
+      {
+        "name": "level_num",
+        "value": 4
+      },
+      {
+        "name": "level_num",
+        "value": 5
+      },
+      {
+        "name": "level_num",
+        "value": 6
+      },
+      {
+        "name": "level_num",
+        "value": 7
+      },
+      {
+        "name": "level_num",
+        "value": 8
+      },
+      {
+        "name": "level_num",
+        "value": 9
+      },
+      {
+        "name": "level_num",
+        "value": 10
+      },
+      {
+        "name": "level_num",
+        "value": 11
+      },
+      {
+        "name": "level_num",
+        "value": 12
+      },
+      {
+        "name": "level_num",
+        "value": 13
+      },
+      {
+        "name": "level_num",
+        "value": 14
+      },
+      {
+        "name": "level_num",
+        "value": 15
+      },
+      {
+        "name": "level_num",
+        "value": 16
+      },
+      {
+        "name": "level_num",
+        "value": 17
+      },
+      {
+        "name": "level_num",
+        "value": 18
+      },
+      {
+        "name": "level_num",
+        "value": 19
+      },
+      {
+        "name": "level_num",
+        "value": 20
+      }
+    ]
+  },
+  {
+    "given_trait": "Intelligence",
+    "trait_value": 3,
+    "power_lvl": [
+      {
+        "name": "level_num",
+        "value": 1
+      },
+      {
+        "name": "level_num",
+        "value": 2
+      },
+      {
+        "name": "level_num",
+        "value": 3
+      },
+      {
+        "name": "level_num",
+        "value": 4
+      },
+      {
+        "name": "level_num",
+        "value": 5
+      },
+      {
+        "name": "level_num",
+        "value": 6
+      },
+      {
+        "name": "level_num",
+        "value": 7
+      },
+      {
+        "name": "level_num",
+        "value": 8
+      },
+      {
+        "name": "level_num",
+        "value": 9
+      },
+      {
+        "name": "level_num",
+        "value": 10
+      },
+      {
+        "name": "level_num",
+        "value": 11
+      },
+      {
+        "name": "level_num",
+        "value": 12
+      },
+      {
+        "name": "level_num",
+        "value": 13
+      },
+      {
+        "name": "level_num",
+        "value": 14
+      },
+      {
+        "name": "level_num",
+        "value": 15
+      },
+      {
+        "name": "level_num",
+        "value": 16
+      },
+      {
+        "name": "level_num",
+        "value": 17
+      },
+      {
+        "name": "level_num",
+        "value": 18
+      },
+      {
+        "name": "level_num",
+        "value": 19
+      },
+      {
+        "name": "level_num",
+        "value": 20
+      }
+    ]
+  },
+  {
+    "given_trait": "Wisdom",
+    "trait_value": 4,
+    "power_lvl": [
+      {
+        "name": "level_num",
+        "value": 1
+      },
+      {
+        "name": "level_num",
+        "value": 2
+      },
+      {
+        "name": "level_num",
+        "value": 3
+      },
+      {
+        "name": "level_num",
+        "value": 4
+      },
+      {
+        "name": "level_num",
+        "value": 5
+      },
+      {
+        "name": "level_num",
+        "value": 6
+      },
+      {
+        "name": "level_num",
+        "value": 7
+      },
+      {
+        "name": "level_num",
+        "value": 8
+      },
+      {
+        "name": "level_num",
+        "value": 9
+      },
+      {
+        "name": "level_num",
+        "value": 10
+      },
+      {
+        "name": "level_num",
+        "value": 11
+      },
+      {
+        "name": "level_num",
+        "value": 12
+      },
+      {
+        "name": "level_num",
+        "value": 13
+      },
+      {
+        "name": "level_num",
+        "value": 14
+      },
+      {
+        "name": "level_num",
+        "value": 15
+      },
+      {
+        "name": "level_num",
+        "value": 16
+      },
+      {
+        "name": "level_num",
+        "value": 17
+      },
+      {
+        "name": "level_num",
+        "value": 18
+      },
+      {
+        "name": "level_num",
+        "value": 19
+      },
+      {
+        "name": "level_num",
+        "value": 20
+      }
+    ]
+  },
+  {
+    "given_trait": "Charisma",
+    "trait_value": 5,
+    "power_lvl": [
+      {
+        "name": "level_num",
+        "value": 1
+      },
+      {
+        "name": "level_num",
+        "value": 2
+      },
+      {
+        "name": "level_num",
+        "value": 3
+      },
+      {
+        "name": "level_num",
+        "value": 4
+      },
+      {
+        "name": "level_num",
+        "value": 5
+      },
+      {
+        "name": "level_num",
+        "value": 6
+      },
+      {
+        "name": "level_num",
+        "value": 7
+      },
+      {
+        "name": "level_num",
+        "value": 8
+      },
+      {
+        "name": "level_num",
+        "value": 9
+      },
+      {
+        "name": "level_num",
+        "value": 10
+      },
+      {
+        "name": "level_num",
+        "value": 11
+      },
+      {
+        "name": "level_num",
+        "value": 12
+      },
+      {
+        "name": "level_num",
+        "value": 13
+      },
+      {
+        "name": "level_num",
+        "value": 14
+      },
+      {
+        "name": "level_num",
+        "value": 15
+      },
+      {
+        "name": "level_num",
+        "value": 16
+      },
+      {
+        "name": "level_num",
+        "value": 17
+      },
+      {
+        "name": "level_num",
+        "value": 18
+      },
+      {
+        "name": "level_num",
+        "value": 19
+      },
+      {
+        "name": "level_num",
+        "value": 20
+      }
+    ]
+  }
+
+]
