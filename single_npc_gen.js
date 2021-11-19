@@ -32,7 +32,7 @@ let npc = {
 }
 
 /*
-    Dynamically generates options for Alignment, Race, and Class from the DnD5e API - Anthony
+    Dynamically generates options for Alignment, Race, and Class from the DnD5e API
  */
 for (let i = 0; i < dropDownList.length; i++) {
     fetch('https://www.dnd5eapi.co/api/' + dropDownList[i])
@@ -54,7 +54,6 @@ for (let i = 0; i < dropDownList.length; i++) {
     I don't really know why it won't just generate the first time when the button is pushed
  */
 genName();
-//genBasics();
 genOccupation();
 genCharacteristics();
 
@@ -84,13 +83,30 @@ function showHidden(select) {
  */
 function generateNPC() {
 
+    let content = document.getElementById("npc_content");
+    if (!document.body.contains(document.getElementById("hr"))) {
+        let line = document.createElement("hr");
+        line.id ="hr";
+        line.style.width = "75%";
+        line.style.border = "2px solid black";
+        content.prepend(line);
+    }
+    if (!document.body.contains(document.getElementById("content_box"))) {
+        let content_box = document.createElement("div");
+        content_box.id = "content_box";
+        content_box.align = "center";
+        content_box.style.width = "550px";
+        content_box.style.border = "thick solid black";
+        content.append(content_box);
+    }
+
+
     genName();
     genBasics();
     genOccupation();
     genCharacteristics();
 
     printNPC();
-    printDetails();
 }
 
 /*
@@ -120,7 +136,7 @@ function genName() {
 
 /*
     Generates the NPC basics using the drop down information. Allows for fully randomized NPCs or
-    customized NPC based on user selection.
+    customized NPC based on user selection
  */
 function genBasics() {
     for (let i = 0; i < dropDownListAll.length; i++) {
@@ -177,7 +193,7 @@ function genBasics() {
 /*
     If dropdowns are set to random this function gets a random value and chooses
     one of the options for you. Different function since these values are fairly static
-    and don't have a lot of data to pull from. - Anthony / Trent
+    and don't have a lot of data to pull from
  */
 function genRandomBase(selectName) {
 
@@ -190,7 +206,7 @@ function genRandomBase(selectName) {
 
 /*
     Read from occupation.JSON and randomly select an occupation category and randomly select
-    the occupation itself. Adds pertinent information to NPC JSON object. - Anthony
+    the occupation itself. Adds pertinent information to NPC JSON object
  */
 function genOccupation() {
     // Read data from occupation.JSON
@@ -208,6 +224,9 @@ function genOccupation() {
         })
 }
 
+/*
+    Randomly generate the information not customizable from the drop down lists
+ */
 function genCharacteristics() {
     let detailList = ['appearance', 'talent', 'mannerism', 'interaction', 'ideal', 'bond', 'flaw'];
 
@@ -247,22 +266,10 @@ function genCharacteristics() {
     }
 }
 
-function genAppearance() {
-    // Read data from selectedDetail JSON
-    fetch ('./Data/appearance.json')
-        .then(data => data.json())
-        .then(data => {
-            // Get random number for detail selection
-            let randNum = Math.floor(Math.random() * data.length);
-
-            npc.appearance = data[randNum];
-        })
-}
-
 /*
     Through a complicated game of chance with arbitrary values I created. This generates an ideal based on NPCs
     current Alignment. Strictness decides how closely the ideal will be to the current alignment.
-    More strict = high chance to match current alignment - Anthony
+    More strict = high chance to match current alignment
  */
 function genIdeal() {
     // Returns value from ideal.json
@@ -294,25 +301,23 @@ function genIdeal() {
 }
 
 /*
-    Test function to display current available features - Anthony
+    Print the NPC to the screen
  */
 function printNPC() {
-    let output = "Name: " + npc.name +
-        "<br/>Alignment: " + npc.align +
+    // Set basics output string
+    let output = [
+        "Alignment: " + npc.align +
         "<br/>Race: " + npc.race +
         "<br/>Gender: " + npc.gender +
-        "<br/>Threat: " + npc.threat;
+        "<br/>Threat: " + npc.threat];
 
     if (npc.threat === "Yes") {
-        output +=
+        output[0] +=
             "<br/>Class: " + npc.class +
             "<br/>Level: " + npc.level
     }
 
-    document.getElementById("output").innerHTML = output;
-}
-
-function  printDetails() {
+    // Set details output string
     let pronoun;
 
     // Uses gender to give proper pronoun in ad-lib
@@ -322,11 +327,58 @@ function  printDetails() {
         pronoun = 'she';
     }
 
-    let output = npc.name + ' is a ' + lowercase(npc.gender) + ' ' + lowercase(npc.race) +
+    output.push( npc.name + ' is a ' + lowercase(npc.gender) + ' ' + npc.race +
         ' who ' + npc.interaction + ' and ' + npc.mannerism + '. ' + uppercase(pronoun) + ' ' + npc.appearance +
-        ' and works as a ' + npc.occupation.sub_name + '. ' + npc.name.split(' ')[0] + ' ' + npc.talent;
+        ' and works as a ' + npc.occupation.sub_name + '. ' + npc.name.split(' ')[0] + ' ' + npc.talent);
 
-    document.getElementById("characteristics").innerHTML = output;
+    // Set secrets output string
+    output.push(
+        "Ideal: "+ npc.ideal +
+        "</br>Bond: " + uppercase(npc.bond) +
+        "</br>Flaw: " + uppercase(npc.flaw));
+
+    // Dynamically creates name content / formatting
+    if(!document.body.contains(document.getElementById("npc_name"))) {
+        let p = document.createElement("p");
+        p.id = "npc_name";
+        p.style.fontSize = "36px";
+        document.getElementById("content_box").append(p);
+    }
+    document.getElementById("npc_name").innerHTML = npc.name;
+
+    // Dynamically creates elements and css for generated NPC content
+    let contentInfo = ["basics", "details", "secrets"];
+    for (let i = 0; i < 3; i++) {
+        // If element doesn't exist is creates it
+        if(!document.body.contains(document.getElementById(contentInfo[i]))) {
+            let hr = document.createElement("hr");
+            hr.style.border = "2px solid black";
+            hr.style.marginBottom = "-18px";
+            document.getElementById("content_box").append(hr);
+
+            let header = document.createElement("p");
+            header.style.fontSize = "24px";
+            header.style.textAlign = "left";
+            header.padding = "2px";
+            header.innerHTML = uppercase(contentInfo[i]);
+            document.getElementById("content_box").append(header);
+
+            let hr2 = document.createElement("hr");
+            hr2.style.border = "1px solid black";
+            hr2.style.width = "20%";
+            hr2.align = "left";
+            hr2.style.marginTop = "-20px";
+            document.getElementById("content_box").append(hr2);
+
+            let p = document.createElement("p");
+            p.id = contentInfo[i];
+            p.style.fontSize = "18px";
+            p.style.textAlign = "left";
+            document.getElementById("content_box").append(p);
+        }
+        // Adds to / overwrites elements
+        document.getElementById(contentInfo[i]).innerHTML = output[i];
+    }
 }
 
 /*
@@ -341,31 +393,4 @@ function uppercase(input) {
  */
 function lowercase(input) {
     return input.charAt(0).toLowerCase() + input.slice(1);
-}
-
-
-//-------------------------------------- Potential Use / Potential Deletion -----------------------------------------
-//----------------------------------------------- Currently Unused --------------------------------------------------
-
-
-// Determines if the user has selected Random in NPC gen form
-// option: selects value to compare if random
-// selectName: gets passed to generateRandom()
-function getRandomAPIOption(selectName) {
-    console.log("Entering API randomizer"); // Debug checkpoint
-
-    let results = "";
-    return fetch('https://www.dnd5eapi.co/api/' + selectName)
-        .then(response => response.json() )
-        .then (data => {
-            let randNum = Math.floor(Math.random() * data.results.length);
-            results = data.results[randNum];
-            results = results.name;
-            return results;
-        });
-
-    /*
-        How to output. FOR FUTURE USE
-        getRandomAPIOption('races').then(results => npc.race = results)
-     */
 }
