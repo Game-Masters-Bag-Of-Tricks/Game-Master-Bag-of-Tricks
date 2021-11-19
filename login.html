@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="style.css">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Login</title>
+
+    <style>
+        .body{
+            position: fixed;
+            overflow-y: scroll;
+            width: 100%;
+            top: -20px;
+            left: -20px;
+            right: -40px;
+            bottom: -40px;
+            width: auto;
+            height: auto;
+            -webkit-filter: blur(0px);
+
+        }
+
+        .header{
+            position: absolute;
+            top: calc(50% - 35px);
+            left: calc(50% - 255px);
+        }
+        .header div{
+            float: left;
+            color: #fff;
+            font-family: 'Exo', sans-serif;
+            font-size: 40px;
+            font-weight: 200;
+        }
+        .header div span{
+            color: #F29E20 !important;
+        }
+
+        .login{
+            position: absolute;
+            top: calc(50% - 75px);
+            left: calc(50% - 50px);
+            height: 150px;
+            width: 350px;
+            padding: 10px;
+
+        }
+        .login input[type=text]{
+            width: 250px;
+            height: 30px;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.6);
+            border-radius: 2px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 400;
+            padding: 4px;
+        }
+        .login input[type=password]{
+            width: 250px;
+            height: 30px;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.6);
+            border-radius: 2px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 400;
+            padding: 4px;
+            margin-top: 10px;
+        }
+        .login input[type=button]{
+            width: 260px;
+            height: 35px;
+            background: #fff;
+            border: 1px solid #fff;
+            cursor: pointer;
+            border-radius: 2px;
+            color: #a18d6c;
+            font-size: 16px;
+            font-weight: 400;
+            padding: 6px;
+            margin-top: 10px;
+        }
+
+        .login input[type=button]:hover{
+            opacity: 0.8;
+        }
+        .login input[type=button]:active{
+            opacity: 0.6;
+        }
+        .login input[type=text]:focus{
+            outline: none;
+            border: 1px solid rgba(255,255,255,0.9);
+        }
+        .login input[type=password]:focus{
+            outline: none;
+            border: 1px solid rgba(255,255,255,0.9);
+        }
+        .login input[type=button]:focus{
+            outline: none;
+        }
+
+        ::-webkit-input-placeholder{
+            color: rgba(255,255,255,0.6);
+        }
+        ::-moz-input-placeholder{
+            color: rgba(255,255,255,0.6);
+        }
+    </style>
+</head>
+
+
+
+
+<body oncontextmenu="return false">
+    <div class="body"></div>
+    <div class="grad"></div>
+    <div class="header">
+        <div>GMBOT</div>
+    </div>
+    <br>
+
+    <form name="login">
+        <div class="login">
+            <input type="text" placeholder="Username" name="userid"><br>
+            <input type="password" placeholder="Password" name="pswrd"><br>
+            <input type="button" onclick="check(this.form)" value="Login"/>
+        </div>
+    </form>
+
+    <script language="javascript">
+        function check(form)
+        {
+
+            if(form.userid.value == "gmbot" && form.pswrd.value == "pass123")
+            {
+                window.open('index.html')
+            }
+            else
+            {
+                alert("The username and password do not match.")
+            }
+        }
+    </script>
+</body>
+
+</html>
