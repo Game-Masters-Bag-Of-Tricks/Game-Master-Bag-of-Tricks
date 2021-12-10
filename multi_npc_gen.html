@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="style.css">
+<script src="multi_npc_gen.js"></script>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>NPC generator</title>
+</head>
+<body>
+<a href="index.html">
+    <img id="logo" alt="gmbot text" src="images/banners.png">
+</a>
+
+<div id="warning" style="width:700px; margin:0 auto" >
+    <b>WARNING!</b> Due to unforeseen errors and our inability to troubleshoot issues using an asynchronous code the current method uses a synchronous system that results in obscenely long loading times.
+    We are aware of the issue and how this goes against our goal of making a QUICK and easy NPC generation. To see actual results just give it some time and if your browser says there is no response from the webpage just click WAIT and give it more time to update.
+    <br /><br />
+</div>
+
+<div class="dropdown">
+    <button class="dropbtn">Menu</button>
+    <div class="dropdown-content">
+        <a href="npc_gen.html">NPC Generator</a>
+        <a href="dung_gen.html">Dungeon Generator</a>
+        <a href="town_gen.html">Town Generator</a>
+    </div>
+</div>
+<!-- Modified drop down options to work with script and look cleaner - Anthony -->
+<form id = "filters" class="mapContent" action="multi_npc_gen.html" method="POST">
+    <label for="num">Number:</label>
+    <input type="text" id="num" name="num" size="3" value="2">
+
+    <label for="alignments">Alignment</label>
+    <select id="alignments" name="align">
+        <option value = "Random">Random</option>
+    </select>
+
+    <label for="races">Race</label>
+    <select id="races" name="race">
+        <option value = "Random">Random</option>
+    </select>
+
+    <label for="gender">Gender</label>
+    <select id="gender" name="gender">
+        <option value = "Random">R</option>
+        <option value="Male">M</option>
+        <option value="Female">F</option>
+    </select>
+
+    <label for="threat">Threat</label>
+    <select id="threat" onchange="showHidden(this)" name="threat">
+        <option value = "Random">R</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+    </select>
+
+    <label id = "isThreat" hidden = true>
+        <label for="classes">Class</label>
+        <select id="classes" name="class">
+            <option value = "Random">Random</option>
+        </select>
+
+        <label for="level">Level</label>
+        <select id="level" name="level">
+            <option value = "Random">R</option>
+            <script>
+                //Generated list 1-20 without just repeating <option> over and over - Anthony
+                for(let i = 1; i <= 20; i++) {
+                    let select = document.getElementById("level");
+                    let opt = document.createElement("option");
+                    opt.text = i;
+                    opt.value = i;
+                    select.appendChild(opt)
+                }
+            </script>
+        </select>
+    </label>
+
+    </br>
+    <!-- Currently this button is just used to prove the drop downs are being read proper - Anthony -->
+    <button id = "gen" type="button" class="gen" onclick="generateMultiNPC()">Generate</button>
+</form>
+<div id="npc_content" align="center" >
+</div>

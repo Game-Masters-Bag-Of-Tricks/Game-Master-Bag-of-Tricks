@@ -50,15 +50,6 @@ for (let i = 0; i < dropDownList.length; i++) {
 }
 
 
-/*
-    Without this the initial "Generate" option doesn't populate properly the first button press. This fixes that.
-    I don't really know why it won't just generate the first time when the button is pushed
- */
-genName();
-genOccupation();
-genCharacteristics();
-
-
 //------------------------------------------- Functions List ---------------------------------------------
 
 
@@ -80,11 +71,31 @@ function showHidden(select) {
 }
 
 /*
+    New method to load JSON information since using fetch was giving us such a hard time
+ */
+function loadJSON(file, callback) {
+
+    let xobj = new XMLHttpRequest();
+    xobj.overrideMimeType("application/json");
+    xobj.open('GET', file, false); // Replace 'appDataServices' with the path to your file
+    xobj.onreadystatechange = function () {
+        if (xobj.readyState == 4 && xobj.status == "200") {
+            // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+            callback(xobj.responseText);
+        }
+    };
+    xobj.send(null);
+}
+
+
+/*
     It works but its not pretty. Calls all the different generation functions
  */
-function generateNPC() {
+function generateMultiNPC() {
 
     let content = document.getElementById("npc_content");
+    let num = document.getElementById("num").value;
+
     if (!document.body.contains(document.getElementById("hr"))) {
         let line = document.createElement("hr");
         line.id ="hr";
@@ -92,48 +103,68 @@ function generateNPC() {
         line.style.border = "2px solid black";
         content.prepend(line);
     }
-    if (!document.body.contains(document.getElementById("content_box"))) {
-        let content_box = document.createElement("div");
-        content_box.id = "content_box";
-        content_box.align = "center";
-        content_box.style.width = "550px";
-        content_box.style.border = "thick solid black";
-        content_box.style.backgroundColor = "#c55372";
-        content.append(content_box);
+
+    if (document.body.contains(document.getElementById("npc_table"))) {
+        let table = document.getElementById("npc_table");
+        table.remove();
     }
 
+    let table = document.createElement("table");
+    table.id = "npc_table";
 
-    genName();
-    genBasics();
-    genOccupation();
-    genCharacteristics();
+    let count = 0;
+    let outerLoop = num / 3;
 
-    printNPC();
+    for (let i = 0; i < outerLoop; i++) {
+        let row = document.createElement("tr");
+        row.id = count.toString();
+
+        for (let i = 0; i < 3 && i < num; i++) {
+            let cell = document.createElement("td");
+            cell.id = i.toString();
+
+            let content_box = document.createElement("div");
+            content_box.id = "content_box" + count.toString();
+            content_box.align = "center";
+            content_box.style.width = "550px";
+            content_box.style.border = "thick solid black";
+            content_box.style.backgroundColor = "#c55372";
+            cell.append(content_box);
+
+            genName();
+            genBasics();
+            genOccupation();
+            genCharacteristics();
+
+            printNPC(content_box);
+
+
+            row.append(cell);
+            count++;
+        }
+
+        table.append(row);
+    }
+
+    content.append(table);
 }
 
 /*
     Randomly generates a first and last name using first-names.json and last-names.json
-    Use of fetch requires website to be hosted through actual http in order to function.
-    Upload to webpages.uncc or use Apache (or equivalent) for local hosting
  */
+
 function genName() {
-    let name;
-    // Get random first name
-    fetch ('./Data/first-names.json')
-        .then(data => data.json())
-        .then(data => {
-            let randNum = Math.floor(Math.random() * data.length);
+    loadJSON('./Data/first-names.json',function(response) {
+        let first_names = JSON.parse(response);
+        let randNum = Math.floor(Math.random() * first_names.length);
+        npc.name = first_names[randNum] + " ";
+    })
 
-            npc.name = data[randNum] + " ";
-        })
-
-    fetch ('./Data/last-names.json')
-        .then(data => data.json())
-        .then(data => {
-            let randNum = Math.floor(Math.random() * data.length);
-
-            npc.name += data[randNum];
-        })
+    loadJSON('./Data/last-names.json',function(response) {
+        let last_names = JSON.parse(response);
+        let randNum = Math.floor(Math.random() * last_names.length);
+        npc.name += last_names[randNum];
+    })
 }
 
 /*
@@ -198,7 +229,6 @@ function genBasics() {
     and don't have a lot of data to pull from
  */
 function genRandomBase(selectName) {
-
     let select = document.getElementById(selectName);
     let randNum = Math.floor(Math.random() * (select.options.length - 1)) + 1;
     let result = select.options[randNum].value
@@ -211,19 +241,14 @@ function genRandomBase(selectName) {
     the occupation itself. Adds pertinent information to NPC JSON object
  */
 function genOccupation() {
-    // Read data from occupation.JSON
-    fetch ('./Data/occupation.json')
-        .then(data => data.json())
-        .then(data => {
-            // Get Random numbers for Occupation and Subtitle (not sure what this is called in DnD)
-            let randSuper = Math.floor(Math.random() * data.length);
-            let randSub = Math.floor(Math.random() * data[randSuper].sub.length);
-
-            // Assign values to current NPC JSON object
-            npc.occupation.super_name = data[randSuper].super;
-            npc.occupation.sub_name = data[randSuper].sub[randSub].name
-            npc.occupation.value = data[randSuper].sub[randSub].value;
-        })
+    loadJSON('./Data/occupation.json',function(response) {
+        let occupations = JSON.parse(response);
+        let randSuper = Math.floor(Math.random() * occupations.length);
+        let randSub = Math.floor(Math.random() * occupations[randSuper].sub.length);
+        npc.occupation.super_name = occupations[randSuper].super;
+        npc.occupation.sub_name = occupations[randSuper].sub[randSub].name
+        npc.occupation.value = occupations[randSuper].sub[randSub].value;
+    })
 }
 
 /*
@@ -233,38 +258,35 @@ function genCharacteristics() {
     let detailList = ['appearance', 'talent', 'mannerism', 'interaction', 'ideal', 'bond', 'flaw'];
 
     for(const detail of detailList) {
-        // Read data from selectedDetail JSON
-        fetch ('./Data/' + detail + '.json')
-            .then(data => data.json())
-            .then(data => {
-                // Get random number for detail selection
-                let randNum = Math.floor(Math.random() * data.length);
+        loadJSON('./Data/' + detail + '.json',function(response) {
+            let data = JSON.parse(response);
+            let randNum = Math.floor(Math.random() * data.length);
 
-                switch (detail) {
-                    case 'appearance':
-                        npc.appearance = data[randNum];
-                        break;
-                    case 'talent':
-                        npc.talent = data[randNum];
-                        break;
-                    case 'mannerism':
-                        npc.mannerism = data[randNum];
-                        break;
-                    case 'interaction':
-                        npc.interaction = data[randNum];
-                        break;
-                    case 'ideal':
-                        // Has special requirements for generation
-                        genIdeal().then(data => npc.ideal = data);
-                        break;
-                    case 'bond':
-                        npc.bond = data[randNum];
-                        break;
-                    case 'flaw':
-                        npc.flaw = data[randNum];
-                        break;
-                }
-            })
+            switch (detail) {
+                case 'appearance':
+                    npc.appearance = data[randNum];
+                    break;
+                case 'talent':
+                    npc.talent = data[randNum];
+                    break;
+                case 'mannerism':
+                    npc.mannerism = data[randNum];
+                    break;
+                case 'interaction':
+                    npc.interaction = data[randNum];
+                    break;
+                case 'ideal':
+                    // Has special requirements for generation
+                    genIdeal();
+                    break;
+                case 'bond':
+                    npc.bond = data[randNum];
+                    break;
+                case 'flaw':
+                    npc.flaw = data[randNum];
+                    break;
+            }
+        })
     }
 }
 
@@ -274,38 +296,38 @@ function genCharacteristics() {
     More strict = high chance to match current alignment
  */
 function genIdeal() {
-    // Returns value from ideal.json
-    return fetch ('./Data/ideal.json')
-        .then(data => data.json())
-        .then(data => {
-            while (true) {
-                let alignStrictness = Math.floor(Math.random() * 100);      // How strict to follow alignment
-                let alignChoice = Math.floor(Math.random() * 100);          // Determines if choices meets strictness requirements
-                let alignGoodChaos = Math.floor(Math.random() * 2);         // Chooses between (Good vs Evil) or (Lawful vs Chaotic) side of alignment
-                let idealSection = Math.floor(Math.random() * data.length); // Which "section" (good, evil, lawful etc)
-                // Which ideal from selected section
-                let encompass = Math.floor(Math.random() * data[idealSection].encompass_ideal.length)
+    loadJSON('./Data/ideal.json',function(response) {
+        let data = JSON.parse(response);
+        while (true) {
+            let alignStrictness = Math.floor(Math.random() * 100);      // How strict to follow alignment
+            let alignChoice = Math.floor(Math.random() * 100);          // Determines if choices meets strictness requirements
+            let alignGoodChaos = Math.floor(Math.random() * 2);         // Chooses between (Good vs Evil) or (Lawful vs Chaotic) side of alignment
+            let idealSection = Math.floor(Math.random() * data.length); // Which "section" (good, evil, lawful etc)
+            // Which ideal from selected section
+            let encompass = Math.floor(Math.random() * data[idealSection].encompass_ideal.length)
 
-                // Checks if choice has to be strict or not
-                if (alignChoice >= alignStrictness) {
-                    // Checks choice against both words of current alignment (Loop is to catch singular Neutral)
-                    for (let i = 0; i < npc.align.split(' ').length; i++) {
-                        if (npc.align.split(' ')[i].toLowerCase() === data[idealSection].ideal) {
-                            return data[idealSection].encompass_ideal[encompass];
-                        }
+            // Checks if choice has to be strict or not
+            if (alignChoice >= alignStrictness) {
+                // Checks choice against both words of current alignment (Loop is to catch singular Neutral)
+                for (let i = 0; i < npc.align.split(' ').length; i++) {
+                    if (npc.align.split(' ')[i].toLowerCase() === data[idealSection].ideal) {
+                        npc.ideal = data[idealSection].encompass_ideal[encompass];
+                        return;
                     }
-                } else {
-                    // If not strict then random section and ideal is chosen
-                    return data[idealSection].encompass_ideal[encompass];
                 }
+            } else {
+                // If not strict then random section and ideal is chosen
+                npc.ideal = data[idealSection].encompass_ideal[encompass];
+                return;
             }
-        })
+        }
+    })
 }
 
 /*
     Print the NPC to the screen
  */
-function printNPC() {
+function printNPC(content_box) {
     // Set basics output string
     let output = [
         "Alignment: " + npc.align +
@@ -340,46 +362,42 @@ function printNPC() {
         "</br>Flaw: " + uppercase(npc.flaw));
 
     // Dynamically creates name content / formatting
-    if(!document.body.contains(document.getElementById("npc_name"))) {
-        let p = document.createElement("p");
-        p.id = "npc_name";
-        p.style.fontSize = "36px";
-        document.getElementById("content_box").append(p);
-    }
-    document.getElementById("npc_name").innerHTML = npc.name;
+    let p = document.createElement("p");
+    p.id = "npc_name";
+    p.style.fontSize = "36px";
+    content_box.append(p);
+    p.innerHTML = npc.name;
 
     // Dynamically creates elements and css for generated NPC content
     let contentInfo = ["basics", "details", "secrets"];
     for (let i = 0; i < 3; i++) {
         // If element doesn't exist is creates it
-        if(!document.body.contains(document.getElementById(contentInfo[i]))) {
-            let hr = document.createElement("hr");
-            hr.style.border = "2px solid black";
-            hr.style.marginBottom = "-18px";
-            document.getElementById("content_box").append(hr);
+        let hr = document.createElement("hr");
+        hr.style.border = "2px solid black";
+        hr.style.marginBottom = "-18px";
+        content_box.append(hr);
 
-            let header = document.createElement("p");
-            header.style.fontSize = "24px";
-            header.style.textAlign = "left";
-            header.padding = "2px";
-            header.innerHTML = uppercase(contentInfo[i]);
-            document.getElementById("content_box").append(header);
+        let header = document.createElement("p");
+        header.style.fontSize = "24px";
+        header.style.textAlign = "left";
+        header.padding = "2px";
+        header.innerHTML = uppercase(contentInfo[i]);
+        content_box.append(header);
 
-            let hr2 = document.createElement("hr");
-            hr2.style.border = "1px solid black";
-            hr2.style.width = "20%";
-            hr2.align = "left";
-            hr2.style.marginTop = "-20px";
-            document.getElementById("content_box").append(hr2);
+        let hr2 = document.createElement("hr");
+        hr2.style.border = "1px solid black";
+        hr2.style.width = "20%";
+        hr2.align = "left";
+        hr2.style.marginTop = "-20px";
+        content_box.append(hr2);
 
-            let p = document.createElement("p");
-            p.id = contentInfo[i];
-            p.style.fontSize = "18px";
-            p.style.textAlign = "left";
-            document.getElementById("content_box").append(p);
-        }
+        let p = document.createElement("p");
+        p.id = contentInfo[i];
+        p.style.fontSize = "18px";
+        p.style.textAlign = "left";
+        content_box.append(p);
         // Adds to / overwrites elements
-        document.getElementById(contentInfo[i]).innerHTML = output[i];
+        p.innerHTML = output[i];
     }
 }
 

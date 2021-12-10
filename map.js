@@ -9,8 +9,6 @@ var collide = false; //whether or not the rooms are colliding
 var amount = 0; //amount of rooms
 var size = 5;	//the actuall size will be a number bettween 5 and 10 | e.g: size+sizeMin
 var sizeMin = 5;
-var disX; //distance x between rooms
-var disY; //distance y between rooms
 var corridorW = 1; //corridor width
 var started = false;
 
@@ -119,6 +117,7 @@ function createRooms()//create the rooms
 {
 	for (var i = 0; i < amount; i++) //for the amount of rooms you want
 	{
+		console.log(size + " : " + sizeMin)
 		var room = new Room(Math.floor(Math.random()*rows)+1, Math.floor(Math.random()*cols)+1, Math.floor(Math.random()*size)+sizeMin, Math.floor(Math.random()*size)+sizeMin, i)
 		//create a room object ^
 
@@ -205,15 +204,23 @@ function rand(num)
 			break;
 		case 1:
 			ret = Math.floor((Math.random() * 3) + 3)
+			size = 5
+			sizeMin = 5
 			break;
 		case 2:
 			ret = Math.floor((Math.random() * 3) + 6)
+			size = 5
+			sizeMin = 5
 			break;
 		case 3:
-			ret = Math.floor((Math.random() * 3) + 11)
+			ret = Math.floor((Math.random() * 10) + 10)
+			size = 4
+			sizeMin = 3
 			break;
 		case 4:
-			ret = Math.floor((Math.random() * 3) + 15)
+			ret = Math.floor((Math.random() * 50) + 30)
+			size = 4
+			sizeMin = 2
 			break;
 		default:
 			ret = 1;
